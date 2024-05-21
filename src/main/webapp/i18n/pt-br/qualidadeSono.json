@@ -1,0 +1,26 @@
+{
+  "healthScoreApp": {
+    "qualidadeSono": {
+      "home": {
+        "title": "Qualidade Sonos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Qualidade Sono",
+        "createOrEditLabel": "Criar ou editar Qualidade Sono",
+        "notFound": "Nenhum Qualidade Sono encontrado"
+      },
+      "created": "Um novo Qualidade Sono foi criado com o identificador {{ param }}",
+      "updated": "Um Qualidade Sono foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Qualidade Sono foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Qualidade Sono {{ id }}?"
+      },
+      "detail": {
+        "title": "Qualidade Sono"
+      },
+      "id": "ID",
+      "data": "Data",
+      "horasSono": "Horas Sono",
+      "internalUser": "Internal User"
+    }
+  }
+}

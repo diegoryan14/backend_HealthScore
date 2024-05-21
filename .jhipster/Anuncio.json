@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20240521173254"
+  },
+  "applications": ["HealthScore"],
+  "fields": [
+    {
+      "fieldName": "titulo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataPublicacao",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dataInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dataFim",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "preco",
+      "fieldType": "Double"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Anuncio",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

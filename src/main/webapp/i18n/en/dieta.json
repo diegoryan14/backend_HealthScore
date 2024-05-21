@@ -1,0 +1,27 @@
+{
+  "healthScoreApp": {
+    "dieta": {
+      "home": {
+        "title": "Dietas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dieta",
+        "createOrEditLabel": "Create or edit a Dieta",
+        "notFound": "No Dietas found"
+      },
+      "created": "A new Dieta is created with identifier {{ param }}",
+      "updated": "A Dieta is updated with identifier {{ param }}",
+      "deleted": "A Dieta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dieta {{ id }}?"
+      },
+      "detail": {
+        "title": "Dieta"
+      },
+      "id": "ID",
+      "descricaoRefeicao": "Descricao Refeicao",
+      "dataHorarioRefeicao": "Data Horario Refeicao",
+      "caloriasConsumidas": "Calorias Consumidas",
+      "internalUser": "Internal User"
+    }
+  }
+}

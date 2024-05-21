@@ -1,0 +1,27 @@
+{
+  "healthScoreApp": {
+    "controleMedicamentos": {
+      "home": {
+        "title": "Controle Medicamentos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Controle Medicamentos",
+        "createOrEditLabel": "Criar ou editar Controle Medicamentos",
+        "notFound": "Nenhum Controle Medicamentos encontrado"
+      },
+      "created": "Um novo Controle Medicamentos foi criado com o identificador {{ param }}",
+      "updated": "Um Controle Medicamentos foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Controle Medicamentos foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Controle Medicamentos {{ id }}?"
+      },
+      "detail": {
+        "title": "Controle Medicamentos"
+      },
+      "id": "ID",
+      "nomeMedicamento": "Nome Medicamento",
+      "dosagem": "Dosagem",
+      "horarioIngestao": "Horario Ingestao",
+      "internalUser": "Internal User"
+    }
+  }
+}

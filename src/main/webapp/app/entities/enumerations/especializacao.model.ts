@@ -1,0 +1,9 @@
+export enum Especializacao {
+  NUTRICIONISTA = 'NUTRICIONISTA',
+
+  PSICOLOGO = 'PSICOLOGO',
+
+  MEDICO = 'MEDICO',
+
+  PERSONAL_TRAINER = 'PERSONAL_TRAINER',
+}

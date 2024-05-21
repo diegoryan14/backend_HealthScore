@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (especialista()) {
+      <div>
+        <h2 data-cy="especialistaDetailsHeading"><span appTranslate="healthScoreApp.especialista.detail.title">Especialista</span></h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ especialista()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.nome">Nome</span></dt>
+          <dd>
+            <span>{{ especialista()!.nome }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.cpf">Cpf</span></dt>
+          <dd>
+            <span>{{ especialista()!.cpf }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.especializacao">Especializacao</span></dt>
+          <dd>
+            <span [appTranslate]="'healthScoreApp.Especializacao.' + (especialista()!.especializacao ?? 'null')">{{
+              { null: '', NUTRICIONISTA: 'NUTRICIONISTA', PSICOLOGO: 'PSICOLOGO', MEDICO: 'MEDICO', PERSONAL_TRAINER: 'PERSONAL_TRAINER' }[
+                especialista()!.especializacao ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.dataFormacao">Data Formacao</span></dt>
+          <dd>
+            <span>{{ especialista()!.dataFormacao | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.telefone">Telefone</span></dt>
+          <dd>
+            <span>{{ especialista()!.telefone }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.email">Email</span></dt>
+          <dd>
+            <span>{{ especialista()!.email }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.especialista.dataNascimento">Data Nascimento</span></dt>
+          <dd>
+            <span>{{ especialista()!.dataNascimento | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/especialista', especialista()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

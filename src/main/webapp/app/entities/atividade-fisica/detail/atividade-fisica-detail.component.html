@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (atividadeFisica()) {
+      <div>
+        <h2 data-cy="atividadeFisicaDetailsHeading">
+          <span appTranslate="healthScoreApp.atividadeFisica.detail.title">Atividade Fisica</span>
+        </h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ atividadeFisica()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.atividadeFisica.tipoAtividade">Tipo Atividade</span></dt>
+          <dd>
+            <span [appTranslate]="'healthScoreApp.TipoAtividade.' + (atividadeFisica()!.tipoAtividade ?? 'null')">{{
+              {
+                null: '',
+                CORRIDA: 'CORRIDA',
+                FUTEBOL: 'FUTEBOL',
+                VOLEI: 'VOLEI',
+                BASQUETE: 'BASQUETE',
+                CAMINHADA: 'CAMINHADA',
+                ACADEMIA: 'ACADEMIA',
+                ATIVIDADE_DOMESTICA: 'ATIVIDADE_DOMESTICA',
+                OUTRO: 'OUTRO'
+              }[atividadeFisica()!.tipoAtividade ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.atividadeFisica.dataHorario">Data Horario</span></dt>
+          <dd>
+            <span>{{ atividadeFisica()!.dataHorario | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.atividadeFisica.duracao">Duracao</span></dt>
+          <dd>
+            <span>{{ atividadeFisica()!.duracao }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.atividadeFisica.passosCalorias">Passos Calorias</span></dt>
+          <dd>
+            <span>{{ atividadeFisica()!.passosCalorias }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.atividadeFisica.internalUser">Internal User</span></dt>
+          <dd>
+            <span>{{ atividadeFisica()!.internalUser?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/atividade-fisica', atividadeFisica()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

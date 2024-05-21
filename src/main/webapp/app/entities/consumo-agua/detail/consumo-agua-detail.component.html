@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (consumoAgua()) {
+      <div>
+        <h2 data-cy="consumoAguaDetailsHeading"><span appTranslate="healthScoreApp.consumoAgua.detail.title">Consumo Agua</span></h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ consumoAgua()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.consumoAgua.dataConsumo">Data Consumo</span></dt>
+          <dd>
+            <span>{{ consumoAgua()!.dataConsumo | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.consumoAgua.quantidadeMl">Quantidade Ml</span></dt>
+          <dd>
+            <span>{{ consumoAgua()!.quantidadeMl }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.consumoAgua.internalUser">Internal User</span></dt>
+          <dd>
+            <span>{{ consumoAgua()!.internalUser?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/consumo-agua', consumoAgua()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

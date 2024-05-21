@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="app-usuario-heading" data-cy="UsuarioCreateUpdateHeading" appTranslate="healthScoreApp.usuario.home.createOrEditLabel">
+        Criar ou editar Usuario
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" appTranslate="healthScoreApp.usuario.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_plano" appTranslate="healthScoreApp.usuario.plano">Plano</label>
+          <select class="form-control" name="plano" formControlName="plano" id="field_plano" data-cy="plano">
+            <option [ngValue]="null">{{ 'healthScoreApp.TipoPlano.null' | translate }}</option>
+            @for (tipoPlano of tipoPlanoValues; track $index) {
+              <option [value]="tipoPlano">{{ 'healthScoreApp.TipoPlano.' + tipoPlano | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dataRegistro" appTranslate="healthScoreApp.usuario.dataRegistro">Data Registro</label>
+          <div class="d-flex">
+            <input
+              id="field_dataRegistro"
+              data-cy="dataRegistro"
+              type="datetime-local"
+              class="form-control"
+              name="dataRegistro"
+              formControlName="dataRegistro"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telefone" appTranslate="healthScoreApp.usuario.telefone">Telefone</label>
+          <input type="number" class="form-control" name="telefone" id="field_telefone" data-cy="telefone" formControlName="telefone" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" appTranslate="healthScoreApp.usuario.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dataNascimento" appTranslate="healthScoreApp.usuario.dataNascimento">Data Nascimento</label>
+          <div class="d-flex">
+            <input
+              id="field_dataNascimento"
+              data-cy="dataNascimento"
+              type="datetime-local"
+              class="form-control"
+              name="dataNascimento"
+              formControlName="dataNascimento"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_metaConsumoAgua" appTranslate="healthScoreApp.usuario.metaConsumoAgua"
+            >Meta Consumo Agua</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="metaConsumoAgua"
+            id="field_metaConsumoAgua"
+            data-cy="metaConsumoAgua"
+            formControlName="metaConsumoAgua"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_metaSono" appTranslate="healthScoreApp.usuario.metaSono">Meta Sono</label>
+          <input type="number" class="form-control" name="metaSono" id="field_metaSono" data-cy="metaSono" formControlName="metaSono" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_metaCaloriasConsumidas" appTranslate="healthScoreApp.usuario.metaCaloriasConsumidas"
+            >Meta Calorias Consumidas</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="metaCaloriasConsumidas"
+            id="field_metaCaloriasConsumidas"
+            data-cy="metaCaloriasConsumidas"
+            formControlName="metaCaloriasConsumidas"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_metaCaloriasQueimadas" appTranslate="healthScoreApp.usuario.metaCaloriasQueimadas"
+            >Meta Calorias Queimadas</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="metaCaloriasQueimadas"
+            id="field_metaCaloriasQueimadas"
+            data-cy="metaCaloriasQueimadas"
+            formControlName="metaCaloriasQueimadas"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pontosUser" appTranslate="healthScoreApp.usuario.pontosUser">Pontos User</label>
+          <input
+            type="number"
+            class="form-control"
+            name="pontosUser"
+            id="field_pontosUser"
+            data-cy="pontosUser"
+            formControlName="pontosUser"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_internalUser" appTranslate="healthScoreApp.usuario.internalUser">Internal User</label>
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

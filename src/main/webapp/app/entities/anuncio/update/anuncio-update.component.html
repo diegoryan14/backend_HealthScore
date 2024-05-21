@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="app-anuncio-heading" data-cy="AnuncioCreateUpdateHeading" appTranslate="healthScoreApp.anuncio.home.createOrEditLabel">
+        Criar ou editar Anuncio
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" appTranslate="healthScoreApp.anuncio.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_titulo" appTranslate="healthScoreApp.anuncio.titulo">Titulo</label>
+          <input type="text" class="form-control" name="titulo" id="field_titulo" data-cy="titulo" formControlName="titulo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descricao" appTranslate="healthScoreApp.anuncio.descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dataPublicacao" appTranslate="healthScoreApp.anuncio.dataPublicacao">Data Publicacao</label>
+          <div class="d-flex">
+            <input
+              id="field_dataPublicacao"
+              data-cy="dataPublicacao"
+              type="datetime-local"
+              class="form-control"
+              name="dataPublicacao"
+              formControlName="dataPublicacao"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dataInicio" appTranslate="healthScoreApp.anuncio.dataInicio">Data Inicio</label>
+          <div class="d-flex">
+            <input
+              id="field_dataInicio"
+              data-cy="dataInicio"
+              type="datetime-local"
+              class="form-control"
+              name="dataInicio"
+              formControlName="dataInicio"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dataFim" appTranslate="healthScoreApp.anuncio.dataFim">Data Fim</label>
+          <div class="d-flex">
+            <input
+              id="field_dataFim"
+              data-cy="dataFim"
+              type="datetime-local"
+              class="form-control"
+              name="dataFim"
+              formControlName="dataFim"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_preco" appTranslate="healthScoreApp.anuncio.preco">Preco</label>
+          <input type="number" class="form-control" name="preco" id="field_preco" data-cy="preco" formControlName="preco" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+{
+  "healthScoreApp": {
+    "usuario": {
+      "home": {
+        "title": "Usuarios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Usuario",
+        "createOrEditLabel": "Crear o editar Usuario",
+        "notFound": "Ningún Usuarios encontrado"
+      },
+      "created": "Un nuevo Usuario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Usuario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Usuario ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuario"
+      },
+      "id": "ID",
+      "plano": "Plano",
+      "dataRegistro": "Data Registro",
+      "telefone": "Telefone",
+      "email": "Email",
+      "dataNascimento": "Data Nascimento",
+      "metaConsumoAgua": "Meta Consumo Agua",
+      "metaSono": "Meta Sono",
+      "metaCaloriasConsumidas": "Meta Calorias Consumidas",
+      "metaCaloriasQueimadas": "Meta Calorias Queimadas",
+      "pontosUser": "Pontos User",
+      "internalUser": "Internal User"
+    }
+  }
+}

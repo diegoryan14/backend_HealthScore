@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (metasSaude()) {
+      <div>
+        <h2 data-cy="metasSaudeDetailsHeading"><span appTranslate="healthScoreApp.metasSaude.detail.title">Metas Saude</span></h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ metasSaude()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.metasSaude.tipoMeta">Tipo Meta</span></dt>
+          <dd>
+            <span [appTranslate]="'healthScoreApp.TipoMeta.' + (metasSaude()!.tipoMeta ?? 'null')">{{
+              { null: '', PERDA_DE_PESO: 'PERDA_DE_PESO', GANHO_DE_MASSA_MUSCULAR: 'GANHO_DE_MASSA_MUSCULAR', OUTRO: 'OUTRO' }[
+                metasSaude()!.tipoMeta ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.metasSaude.valorMeta">Valor Meta</span></dt>
+          <dd>
+            <span>{{ metasSaude()!.valorMeta }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.metasSaude.dataInicio">Data Inicio</span></dt>
+          <dd>
+            <span>{{ metasSaude()!.dataInicio | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.metasSaude.dataFim">Data Fim</span></dt>
+          <dd>
+            <span>{{ metasSaude()!.dataFim | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.metasSaude.internalUser">Internal User</span></dt>
+          <dd>
+            <span>{{ metasSaude()!.internalUser?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/metas-saude', metasSaude()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

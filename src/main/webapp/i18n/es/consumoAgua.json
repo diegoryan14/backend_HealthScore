@@ -1,0 +1,26 @@
+{
+  "healthScoreApp": {
+    "consumoAgua": {
+      "home": {
+        "title": "Consumo Aguas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Consumo Agua",
+        "createOrEditLabel": "Crear o editar Consumo Agua",
+        "notFound": "Ningún Consumo Aguas encontrado"
+      },
+      "created": "Un nuevo Consumo Agua ha sido creado con el identificador {{ param }}",
+      "updated": "Un Consumo Agua ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Consumo Agua ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Consumo Agua {{ id }}?"
+      },
+      "detail": {
+        "title": "Consumo Agua"
+      },
+      "id": "ID",
+      "dataConsumo": "Data Consumo",
+      "quantidadeMl": "Quantidade Ml",
+      "internalUser": "Internal User"
+    }
+  }
+}

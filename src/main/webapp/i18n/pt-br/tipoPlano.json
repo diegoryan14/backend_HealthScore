@@ -1,0 +1,11 @@
+{
+  "healthScoreApp": {
+    "TipoPlano": {
+      "null": "",
+      "GRATUITO": "GRATUITO",
+      "BRONZE": "BRONZE",
+      "PRATA": "PRATA",
+      "OURO": "OURO"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Usuario.
+    -->
+    <changeSet id="20240521172654-1" author="jhipster">
+        <createTable tableName="usuario">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1500">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="plano" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_registro" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_nascimento" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="meta_consumo_agua" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="meta_sono" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="meta_calorias_consumidas" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="meta_calorias_queimadas" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="pontos_user" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="internal_user_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__internal_user_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="usuario" columnName="data_registro" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="usuario" columnName="data_nascimento" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240521172654-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/usuario.csv"
+                  separator=";"
+                  tableName="usuario"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="plano" type="string"/>
+            <column name="data_registro" type="date"/>
+            <column name="telefone" type="numeric"/>
+            <column name="email" type="string"/>
+            <column name="data_nascimento" type="date"/>
+            <column name="meta_consumo_agua" type="numeric"/>
+            <column name="meta_sono" type="numeric"/>
+            <column name="meta_calorias_consumidas" type="numeric"/>
+            <column name="meta_calorias_queimadas" type="numeric"/>
+            <column name="pontos_user" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

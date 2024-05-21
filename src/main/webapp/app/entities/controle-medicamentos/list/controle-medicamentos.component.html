@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="ControleMedicamentosHeading">
+    <span appTranslate="healthScoreApp.controleMedicamentos.home.title">Controle Medicamentos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="healthScoreApp.controleMedicamentos.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-controle-medicamentos"
+        [routerLink]="['/controle-medicamentos/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="healthScoreApp.controleMedicamentos.home.createLabel">Criar novo Controle Medicamentos</span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <app-filter [filters]="filters"></app-filter>
+
+  @if (controleMedicamentos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span appTranslate="healthScoreApp.controleMedicamentos.home.notFound">Nenhum Controle Medicamentos encontrado</span>
+    </div>
+  }
+
+  @if (controleMedicamentos && controleMedicamentos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr appSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" appSortBy="id">
+              <div class="d-flex">
+                <span appTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="nomeMedicamento">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.controleMedicamentos.nomeMedicamento">Nome Medicamento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dosagem">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.controleMedicamentos.dosagem">Dosagem</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="horarioIngestao">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.controleMedicamentos.horarioIngestao">Horario Ingestao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="internalUser.id">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.controleMedicamentos.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (controleMedicamentos of controleMedicamentos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/controle-medicamentos', controleMedicamentos.id, 'view']">{{ controleMedicamentos.id }}</a>
+              </td>
+              <td>{{ controleMedicamentos.nomeMedicamento }}</td>
+              <td>{{ controleMedicamentos.dosagem }}</td>
+              <td>{{ controleMedicamentos.horarioIngestao | formatMediumDatetime }}</td>
+              <td>
+                {{ controleMedicamentos.internalUser?.id }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/controle-medicamentos', controleMedicamentos.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/controle-medicamentos', controleMedicamentos.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(controleMedicamentos)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (controleMedicamentos && controleMedicamentos.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

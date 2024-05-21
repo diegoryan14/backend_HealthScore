@@ -1,0 +1,31 @@
+{
+  "healthScoreApp": {
+    "especialista": {
+      "home": {
+        "title": "Especialistas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Especialista",
+        "createOrEditLabel": "Crear o editar Especialista",
+        "notFound": "Ningún Especialistas encontrado"
+      },
+      "created": "Un nuevo Especialista ha sido creado con el identificador {{ param }}",
+      "updated": "Un Especialista ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Especialista ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Especialista {{ id }}?"
+      },
+      "detail": {
+        "title": "Especialista"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "cpf": "Cpf",
+      "especializacao": "Especializacao",
+      "dataFormacao": "Data Formacao",
+      "telefone": "Telefone",
+      "email": "Email",
+      "dataNascimento": "Data Nascimento",
+      "consultas": "Consultas"
+    }
+  }
+}

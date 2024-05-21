@@ -1,0 +1,28 @@
+{
+  "healthScoreApp": {
+    "metasSaude": {
+      "home": {
+        "title": "Metas Saudes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Metas Saude",
+        "createOrEditLabel": "Crear o editar Metas Saude",
+        "notFound": "Ningún Metas Saudes encontrado"
+      },
+      "created": "Un nuevo Metas Saude ha sido creado con el identificador {{ param }}",
+      "updated": "Un Metas Saude ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Metas Saude ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Metas Saude {{ id }}?"
+      },
+      "detail": {
+        "title": "Metas Saude"
+      },
+      "id": "ID",
+      "tipoMeta": "Tipo Meta",
+      "valorMeta": "Valor Meta",
+      "dataInicio": "Data Inicio",
+      "dataFim": "Data Fim",
+      "internalUser": "Internal User"
+    }
+  }
+}

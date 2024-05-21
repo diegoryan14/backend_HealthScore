@@ -1,0 +1,29 @@
+{
+  "healthScoreApp": {
+    "anuncio": {
+      "home": {
+        "title": "Anuncios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Anuncio",
+        "createOrEditLabel": "Crear o editar Anuncio",
+        "notFound": "Ningún Anuncios encontrado"
+      },
+      "created": "Un nuevo Anuncio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Anuncio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Anuncio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Anuncio {{ id }}?"
+      },
+      "detail": {
+        "title": "Anuncio"
+      },
+      "id": "ID",
+      "titulo": "Titulo",
+      "descricao": "Descricao",
+      "dataPublicacao": "Data Publicacao",
+      "dataInicio": "Data Inicio",
+      "dataFim": "Data Fim",
+      "preco": "Preco"
+    }
+  }
+}

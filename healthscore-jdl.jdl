@@ -1,0 +1,168 @@
+application {
+    config {
+        baseName HealthScore
+        packageName com.healthscore.app
+        applicationType monolith
+        authenticationType jwt
+        buildTool gradle
+        cacheProvider caffeine
+        databaseType sql
+        devDatabaseType mysql
+        prodDatabaseType mysql
+        dtoSuffix Dto
+        enableHibernateCache true
+        enableTranslation true
+        clientFramework angularX
+        clientPackageManager npm
+        clientTheme flatly
+        languages [en, es, pt-br]
+        nativeLanguage pt-br
+        jhiPrefix app
+    }
+    entities *
+}
+
+entity Usuario {
+    plano TipoPlano,
+    dataRegistro Instant,
+    telefone Integer,
+    email String,
+    dataNascimento Instant,
+    metaConsumoAgua Integer,
+    metaSono Double,
+    metaCaloriasConsumidas Double,
+    metaCaloriasQueimadas Double,
+    pontosUser Integer
+}
+
+entity AtividadeFisica {
+    tipoAtividade TipoAtividade,
+    dataHorario Instant,
+    duracao Integer,
+    passosCalorias Integer
+}
+
+entity Dieta {
+    descricaoRefeicao String,
+    dataHorarioRefeicao Instant,
+    caloriasConsumidas Integer
+}
+
+entity QualidadeSono {
+    data Instant,
+    horasSono Integer
+}
+
+entity ControleMedicamentos {
+    nomeMedicamento String,
+    dosagem String,
+    horarioIngestao Instant
+}
+
+entity MetasSaude {
+    tipoMeta TipoMeta,
+    valorMeta Integer,
+    dataInicio Instant,
+    dataFim Instant
+}
+
+entity Anuncio {
+    titulo String,
+    descricao String,
+    dataPublicacao Instant,
+    dataInicio Instant,
+    dataFim Instant,
+    preco Double
+}
+
+entity ConsultaEspecialista {
+    tipoEspecialista TipoEspecialista,
+    dataHorarioConsulta Instant,
+    statusConsulta StatusConsulta,
+    linkConsulta String,
+}
+
+entity ConsumoAgua {
+    dataConsumo Instant,
+    quantidadeMl Integer
+}
+
+entity Especialista {
+    nome String,
+    cpf String,
+    especializacao Especializacao,
+    dataFormacao Instant,
+    telefone Integer,
+    email String,
+    dataNascimento Instant
+}
+
+enum Especializacao {
+    NUTRICIONISTA,
+    PSICOLOGO,
+    MEDICO,
+    PERSONAL_TRAINER
+}
+
+enum TipoPlano {
+    GRATUITO,
+    BRONZE,
+    PRATA,
+    OURO
+}
+
+enum TipoAtividade {
+    CORRIDA,
+    FUTEBOL,
+    VOLEI,
+    BASQUETE,
+    CAMINHADA,
+    ACADEMIA,
+    ATIVIDADE_DOMESTICA,
+    OUTRO
+}
+
+enum TipoMeta {
+    PERDA_DE_PESO,
+    GANHO_DE_MASSA_MUSCULAR,
+    OUTRO
+}
+
+enum TipoEspecialista {
+    MEDICO,
+    PSICOLOGO,
+    NUTRICIONISTA,
+    PERSONAL_TRAINER
+}
+
+enum StatusConsulta {
+    PENDENTE,
+    CONFIRMADA,
+    CANCELADA,
+    ADIADA,
+    EM_ANDAMENTO,
+    CONCLUIDA,
+    NAO_COMPARECEU
+}
+
+relationship OneToOne {
+    Usuario{internalUser} to User with builtInEntity
+}
+
+relationship ManyToOne {
+    AtividadeFisica{internalUser} to User with builtInEntity,
+    Dieta{internalUser} to User with builtInEntity,
+    QualidadeSono{internalUser} to User with builtInEntity,
+    ControleMedicamentos{internalUser} to User with builtInEntity,
+    MetasSaude{internalUser} to User with builtInEntity,
+    ConsultaEspecialista{internalUser} to User with builtInEntity,
+    ConsumoAgua{internalUser} to User with builtInEntity
+}
+
+relationship OneToMany {
+    Especialista{consultas} to ConsultaEspecialista{especialista}
+}
+
+paginate all with pagination
+filter *
+service all with serviceImpl

@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "HealthScore",
+    "buildTool": "gradle",
+    "cacheProvider": "caffeine",
+    "clientFramework": "angular",
+    "clientPackageManager": "npm",
+    "clientTheme": "flatly",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "devServerPort": 4200,
+    "dtoSuffix": "Dto",
+    "enableHibernateCache": true,
+    "enableTranslation": true,
+    "entities": [
+      "Usuario",
+      "AtividadeFisica",
+      "Dieta",
+      "QualidadeSono",
+      "ControleMedicamentos",
+      "MetasSaude",
+      "Anuncio",
+      "ConsultaEspecialista",
+      "ConsumoAgua",
+      "Especialista"
+    ],
+    "jhiPrefix": "app",
+    "jhipsterVersion": "8.4.0",
+    "jwtSecretKey": "ZGFiZWFkMmUzYTBmOGYzZjI1OGQyNmNjYmViN2I1NTc3MzQxODA2ZDU5N2ZlNDljY2U0Nzk0OTVhNDA2Y2E2NjRlYTVmMWVkNzY5YTQ2NDg3M2FmMjM5MzczZDNjN2JjNTg0NGMyNDgyOTQ4NGE1NmY2NzMxMzk0YzA5ZmYxYzc=",
+    "languages": ["pt-br", "en", "es"],
+    "lastLiquibaseTimestamp": 1716312954000,
+    "nativeLanguage": "pt-br",
+    "packageFolder": "com/healthscore/app",
+    "packageName": "com.healthscore.app",
+    "prodDatabaseType": "mysql"
+  }
+}

@@ -1,0 +1,30 @@
+@if (consultaEspecialista) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(consultaEspecialista.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="consultaEspecialistaDeleteDialogHeading" appTranslate="entity.delete.title">Confirme a exclusão</h4>
+
+      <span class="btn btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></span>
+    </div>
+
+    <div class="modal-body">
+      <app-alert-error></app-alert-error>
+      <p
+        id="app-delete-consultaEspecialista-heading"
+        appTranslate="healthScoreApp.consultaEspecialista.delete.question"
+        [translateValues]="{ id: consultaEspecialista.id }"
+      >
+        Tem certeza de que deseja excluir Consulta Especialista {{ consultaEspecialista.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancelar</span>
+      </button>
+
+      <button id="app-confirm-delete-consultaEspecialista" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span appTranslate="entity.action.delete">Excluir</span>
+      </button>
+    </div>
+  </form>
+}

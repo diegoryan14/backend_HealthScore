@@ -1,0 +1,47 @@
+{
+  "annotations": {
+    "changelogDate": "20240521173354"
+  },
+  "applications": ["HealthScore"],
+  "fields": [
+    {
+      "fieldName": "tipoEspecialista",
+      "fieldType": "TipoEspecialista",
+      "fieldValues": "MEDICO,PSICOLOGO,NUTRICIONISTA,PERSONAL_TRAINER"
+    },
+    {
+      "fieldName": "dataHorarioConsulta",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "statusConsulta",
+      "fieldType": "StatusConsulta",
+      "fieldValues": "PENDENTE,CONFIRMADA,CANCELADA,ADIADA,EM_ANDAMENTO,CONCLUIDA,NAO_COMPARECEU"
+    },
+    {
+      "fieldName": "linkConsulta",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "ConsultaEspecialista",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityName": "especialista",
+      "otherEntityRelationshipName": "consultas",
+      "relationshipName": "especialista",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

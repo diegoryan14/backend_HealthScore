@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (anuncio()) {
+      <div>
+        <h2 data-cy="anuncioDetailsHeading"><span appTranslate="healthScoreApp.anuncio.detail.title">Anuncio</span></h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ anuncio()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.anuncio.titulo">Titulo</span></dt>
+          <dd>
+            <span>{{ anuncio()!.titulo }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.anuncio.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ anuncio()!.descricao }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.anuncio.dataPublicacao">Data Publicacao</span></dt>
+          <dd>
+            <span>{{ anuncio()!.dataPublicacao | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.anuncio.dataInicio">Data Inicio</span></dt>
+          <dd>
+            <span>{{ anuncio()!.dataInicio | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.anuncio.dataFim">Data Fim</span></dt>
+          <dd>
+            <span>{{ anuncio()!.dataFim | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.anuncio.preco">Preco</span></dt>
+          <dd>
+            <span>{{ anuncio()!.preco }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/anuncio', anuncio()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

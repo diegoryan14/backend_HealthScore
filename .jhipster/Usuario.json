@@ -1,0 +1,63 @@
+{
+  "annotations": {
+    "changelogDate": "20240521172654"
+  },
+  "applications": ["HealthScore"],
+  "fields": [
+    {
+      "fieldName": "plano",
+      "fieldType": "TipoPlano",
+      "fieldValues": "GRATUITO,BRONZE,PRATA,OURO"
+    },
+    {
+      "fieldName": "dataRegistro",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataNascimento",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "metaConsumoAgua",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "metaSono",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "metaCaloriasConsumidas",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "metaCaloriasQueimadas",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "pontosUser",
+      "fieldType": "Integer"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Usuario",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

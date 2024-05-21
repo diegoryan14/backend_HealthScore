@@ -1,0 +1,28 @@
+{
+  "healthScoreApp": {
+    "atividadeFisica": {
+      "home": {
+        "title": "Atividade Fisicas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Atividade Fisica",
+        "createOrEditLabel": "Create or edit a Atividade Fisica",
+        "notFound": "No Atividade Fisicas found"
+      },
+      "created": "A new Atividade Fisica is created with identifier {{ param }}",
+      "updated": "A Atividade Fisica is updated with identifier {{ param }}",
+      "deleted": "A Atividade Fisica is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Atividade Fisica {{ id }}?"
+      },
+      "detail": {
+        "title": "Atividade Fisica"
+      },
+      "id": "ID",
+      "tipoAtividade": "Tipo Atividade",
+      "dataHorario": "Data Horario",
+      "duracao": "Duracao",
+      "passosCalorias": "Passos Calorias",
+      "internalUser": "Internal User"
+    }
+  }
+}

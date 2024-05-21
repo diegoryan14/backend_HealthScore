@@ -1,0 +1,165 @@
+<div>
+  <h2 id="page-heading" data-cy="EspecialistaHeading">
+    <span appTranslate="healthScoreApp.especialista.home.title">Especialistas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="healthScoreApp.especialista.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-especialista"
+        [routerLink]="['/especialista/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="healthScoreApp.especialista.home.createLabel">Criar novo Especialista</span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <app-filter [filters]="filters"></app-filter>
+
+  @if (especialistas?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span appTranslate="healthScoreApp.especialista.home.notFound">Nenhum Especialista encontrado</span>
+    </div>
+  }
+
+  @if (especialistas && especialistas.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr appSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" appSortBy="id">
+              <div class="d-flex">
+                <span appTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="nome">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.nome">Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="cpf">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.cpf">Cpf</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="especializacao">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.especializacao">Especializacao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dataFormacao">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.dataFormacao">Data Formacao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="telefone">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.telefone">Telefone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="email">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dataNascimento">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.especialista.dataNascimento">Data Nascimento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (especialista of especialistas; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/especialista', especialista.id, 'view']">{{ especialista.id }}</a>
+              </td>
+              <td>{{ especialista.nome }}</td>
+              <td>{{ especialista.cpf }}</td>
+              <td [appTranslate]="'healthScoreApp.Especializacao.' + (especialista.especializacao ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    NUTRICIONISTA: 'NUTRICIONISTA',
+                    PSICOLOGO: 'PSICOLOGO',
+                    MEDICO: 'MEDICO',
+                    PERSONAL_TRAINER: 'PERSONAL_TRAINER'
+                  }[especialista.especializacao ?? 'null']
+                }}
+              </td>
+              <td>{{ especialista.dataFormacao | formatMediumDatetime }}</td>
+              <td>{{ especialista.telefone }}</td>
+              <td>{{ especialista.email }}</td>
+              <td>{{ especialista.dataNascimento | formatMediumDatetime }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/especialista', especialista.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/especialista', especialista.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(especialista)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (especialistas && especialistas.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

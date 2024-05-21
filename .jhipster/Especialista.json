@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20240521173554"
+  },
+  "applications": ["HealthScore"],
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "especializacao",
+      "fieldType": "Especializacao",
+      "fieldValues": "NUTRICIONISTA,PSICOLOGO,MEDICO,PERSONAL_TRAINER"
+    },
+    {
+      "fieldName": "dataFormacao",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataNascimento",
+      "fieldType": "Instant"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Especialista",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "consultaEspecialista",
+      "otherEntityRelationshipName": "especialista",
+      "relationshipName": "consultas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

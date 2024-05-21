@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20240521173454"
+  },
+  "applications": ["HealthScore"],
+  "fields": [
+    {
+      "fieldName": "dataConsumo",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "quantidadeMl",
+      "fieldType": "Integer"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "ConsumoAgua",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "internalUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

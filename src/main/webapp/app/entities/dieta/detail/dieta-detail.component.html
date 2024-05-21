@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (dieta()) {
+      <div>
+        <h2 data-cy="dietaDetailsHeading"><span appTranslate="healthScoreApp.dieta.detail.title">Dieta</span></h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ dieta()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.dieta.descricaoRefeicao">Descricao Refeicao</span></dt>
+          <dd>
+            <span>{{ dieta()!.descricaoRefeicao }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.dieta.dataHorarioRefeicao">Data Horario Refeicao</span></dt>
+          <dd>
+            <span>{{ dieta()!.dataHorarioRefeicao | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.dieta.caloriasConsumidas">Calorias Consumidas</span></dt>
+          <dd>
+            <span>{{ dieta()!.caloriasConsumidas }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.dieta.internalUser">Internal User</span></dt>
+          <dd>
+            <span>{{ dieta()!.internalUser?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/dieta', dieta()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

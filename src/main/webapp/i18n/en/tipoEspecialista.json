@@ -1,0 +1,11 @@
+{
+  "healthScoreApp": {
+    "TipoEspecialista": {
+      "null": "",
+      "MEDICO": "MEDICO",
+      "PSICOLOGO": "PSICOLOGO",
+      "NUTRICIONISTA": "NUTRICIONISTA",
+      "PERSONAL_TRAINER": "PERSONAL_TRAINER"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "healthScoreApp": {
+    "consultaEspecialista": {
+      "home": {
+        "title": "Consulta Especialistas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Consulta Especialista",
+        "createOrEditLabel": "Create or edit a Consulta Especialista",
+        "notFound": "No Consulta Especialistas found"
+      },
+      "created": "A new Consulta Especialista is created with identifier {{ param }}",
+      "updated": "A Consulta Especialista is updated with identifier {{ param }}",
+      "deleted": "A Consulta Especialista is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Consulta Especialista {{ id }}?"
+      },
+      "detail": {
+        "title": "Consulta Especialista"
+      },
+      "id": "ID",
+      "tipoEspecialista": "Tipo Especialista",
+      "dataHorarioConsulta": "Data Horario Consulta",
+      "statusConsulta": "Status Consulta",
+      "linkConsulta": "Link Consulta",
+      "internalUser": "Internal User",
+      "especialista": "Especialista"
+    }
+  }
+}

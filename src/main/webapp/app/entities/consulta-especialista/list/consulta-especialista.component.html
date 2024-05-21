@@ -1,0 +1,186 @@
+<div>
+  <h2 id="page-heading" data-cy="ConsultaEspecialistaHeading">
+    <span appTranslate="healthScoreApp.consultaEspecialista.home.title">Consulta Especialistas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="healthScoreApp.consultaEspecialista.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-consulta-especialista"
+        [routerLink]="['/consulta-especialista/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="healthScoreApp.consultaEspecialista.home.createLabel">Criar novo Consulta Especialista</span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <app-filter [filters]="filters"></app-filter>
+
+  @if (consultaEspecialistas?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span appTranslate="healthScoreApp.consultaEspecialista.home.notFound">Nenhum Consulta Especialista encontrado</span>
+    </div>
+  }
+
+  @if (consultaEspecialistas && consultaEspecialistas.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr appSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" appSortBy="id">
+              <div class="d-flex">
+                <span appTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="tipoEspecialista">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.consultaEspecialista.tipoEspecialista">Tipo Especialista</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dataHorarioConsulta">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.consultaEspecialista.dataHorarioConsulta">Data Horario Consulta</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="statusConsulta">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.consultaEspecialista.statusConsulta">Status Consulta</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="linkConsulta">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.consultaEspecialista.linkConsulta">Link Consulta</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="internalUser.id">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.consultaEspecialista.internalUser">Internal User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="especialista.id">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.consultaEspecialista.especialista">Especialista</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (consultaEspecialista of consultaEspecialistas; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/consulta-especialista', consultaEspecialista.id, 'view']">{{ consultaEspecialista.id }}</a>
+              </td>
+              <td [appTranslate]="'healthScoreApp.TipoEspecialista.' + (consultaEspecialista.tipoEspecialista ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    MEDICO: 'MEDICO',
+                    PSICOLOGO: 'PSICOLOGO',
+                    NUTRICIONISTA: 'NUTRICIONISTA',
+                    PERSONAL_TRAINER: 'PERSONAL_TRAINER'
+                  }[consultaEspecialista.tipoEspecialista ?? 'null']
+                }}
+              </td>
+              <td>{{ consultaEspecialista.dataHorarioConsulta | formatMediumDatetime }}</td>
+              <td [appTranslate]="'healthScoreApp.StatusConsulta.' + (consultaEspecialista.statusConsulta ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    PENDENTE: 'PENDENTE',
+                    CONFIRMADA: 'CONFIRMADA',
+                    CANCELADA: 'CANCELADA',
+                    ADIADA: 'ADIADA',
+                    EM_ANDAMENTO: 'EM_ANDAMENTO',
+                    CONCLUIDA: 'CONCLUIDA',
+                    NAO_COMPARECEU: 'NAO_COMPARECEU'
+                  }[consultaEspecialista.statusConsulta ?? 'null']
+                }}
+              </td>
+              <td>{{ consultaEspecialista.linkConsulta }}</td>
+              <td>
+                {{ consultaEspecialista.internalUser?.id }}
+              </td>
+              <td>
+                @if (consultaEspecialista.especialista) {
+                  <div>
+                    <a [routerLink]="['/especialista', consultaEspecialista.especialista.id, 'view']">{{
+                      consultaEspecialista.especialista.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/consulta-especialista', consultaEspecialista.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/consulta-especialista', consultaEspecialista.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(consultaEspecialista)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (consultaEspecialistas && consultaEspecialistas.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (qualidadeSono()) {
+      <div>
+        <h2 data-cy="qualidadeSonoDetailsHeading"><span appTranslate="healthScoreApp.qualidadeSono.detail.title">Qualidade Sono</span></h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ qualidadeSono()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.qualidadeSono.data">Data</span></dt>
+          <dd>
+            <span>{{ qualidadeSono()!.data | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.qualidadeSono.horasSono">Horas Sono</span></dt>
+          <dd>
+            <span>{{ qualidadeSono()!.horasSono }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.qualidadeSono.internalUser">Internal User</span></dt>
+          <dd>
+            <span>{{ qualidadeSono()!.internalUser?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/qualidade-sono', qualidadeSono()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

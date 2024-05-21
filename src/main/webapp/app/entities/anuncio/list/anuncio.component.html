@@ -1,0 +1,147 @@
+<div>
+  <h2 id="page-heading" data-cy="AnuncioHeading">
+    <span appTranslate="healthScoreApp.anuncio.home.title">Anuncios</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="healthScoreApp.anuncio.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-anuncio"
+        [routerLink]="['/anuncio/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="healthScoreApp.anuncio.home.createLabel">Criar novo Anuncio</span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <app-filter [filters]="filters"></app-filter>
+
+  @if (anuncios?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span appTranslate="healthScoreApp.anuncio.home.notFound">Nenhum Anuncio encontrado</span>
+    </div>
+  }
+
+  @if (anuncios && anuncios.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr appSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" appSortBy="id">
+              <div class="d-flex">
+                <span appTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="titulo">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.anuncio.titulo">Titulo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="descricao">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.anuncio.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dataPublicacao">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.anuncio.dataPublicacao">Data Publicacao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dataInicio">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.anuncio.dataInicio">Data Inicio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="dataFim">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.anuncio.dataFim">Data Fim</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" appSortBy="preco">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.anuncio.preco">Preco</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (anuncio of anuncios; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/anuncio', anuncio.id, 'view']">{{ anuncio.id }}</a>
+              </td>
+              <td>{{ anuncio.titulo }}</td>
+              <td>{{ anuncio.descricao }}</td>
+              <td>{{ anuncio.dataPublicacao | formatMediumDatetime }}</td>
+              <td>{{ anuncio.dataInicio | formatMediumDatetime }}</td>
+              <td>{{ anuncio.dataFim | formatMediumDatetime }}</td>
+              <td>{{ anuncio.preco }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/anuncio', anuncio.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/anuncio', anuncio.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(anuncio)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" appTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (anuncios && anuncios.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

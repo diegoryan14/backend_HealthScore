@@ -1,0 +1,7 @@
+export enum TipoMeta {
+  PERDA_DE_PESO = 'PERDA_DE_PESO',
+
+  GANHO_DE_MASSA_MUSCULAR = 'GANHO_DE_MASSA_MUSCULAR',
+
+  OUTRO = 'OUTRO',
+}
