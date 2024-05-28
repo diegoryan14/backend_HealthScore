@@ -32,7 +32,14 @@ entity Usuario {
     metaSono Double,
     metaCaloriasConsumidas Double,
     metaCaloriasQueimadas Double,
-    pontosUser Integer
+    pontosUser Integer,
+    genero Genero
+}
+
+enum Genero {
+    MASCULINO,
+    FEMININO,
+    NAO_IDENTIFICADO
 }
 
 entity AtividadeFisica {

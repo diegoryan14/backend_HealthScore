@@ -3,29 +3,31 @@ import dayjs from 'dayjs/esm';
 import { IUsuario, NewUsuario } from './usuario.model';
 
 export const sampleWithRequiredData: IUsuario = {
-  id: 4032,
+  id: 19737,
 };
 
 export const sampleWithPartialData: IUsuario = {
-  id: 29650,
-  dataRegistro: dayjs('2024-05-21T06:09'),
-  telefone: 26905,
-  email: 'Eduarda.Martins46@hotmail.com',
-  metaConsumoAgua: 17823,
+  id: 26905,
+  plano: 'BRONZE',
+  dataRegistro: dayjs('2024-05-21T12:16'),
+  telefone: 31203,
+  dataNascimento: dayjs('2024-05-20T20:52'),
+  genero: 'MASCULINO',
 };
 
 export const sampleWithFullData: IUsuario = {
-  id: 5547,
-  plano: 'PRATA',
-  dataRegistro: dayjs('2024-05-21T03:43'),
-  telefone: 27582,
-  email: 'Sirineu_Silva37@bol.com.br',
-  dataNascimento: dayjs('2024-05-20T18:40'),
-  metaConsumoAgua: 31544,
-  metaSono: 14548.22,
-  metaCaloriasConsumidas: 31046.53,
-  metaCaloriasQueimadas: 7060,
-  pontosUser: 27402,
+  id: 520,
+  plano: 'BRONZE',
+  dataRegistro: dayjs('2024-05-21T04:23'),
+  telefone: 5547,
+  email: 'Lucas2@live.com',
+  dataNascimento: dayjs('2024-05-21T15:43'),
+  metaConsumoAgua: 28495,
+  metaSono: 12373.06,
+  metaCaloriasConsumidas: 31093,
+  metaCaloriasQueimadas: 31543.46,
+  pontosUser: 14548,
+  genero: 'NAO_IDENTIFICADO',
 };
 
 export const sampleWithNewData: NewUsuario = {

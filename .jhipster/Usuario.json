@@ -44,6 +44,11 @@
     {
       "fieldName": "pontosUser",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "genero",
+      "fieldType": "Genero",
+      "fieldValues": "MASCULINO,FEMININO,NAO_IDENTIFICADO"
     }
   ],
   "jpaMetamodelFiltering": true,

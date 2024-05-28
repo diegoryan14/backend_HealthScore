@@ -1,5 +1,6 @@
 package com.healthscore.app.service.criteria;
 
+import com.healthscore.app.domain.enumeration.Genero;
 import com.healthscore.app.domain.enumeration.TipoPlano;
 import java.io.Serializable;
 import java.util.Objects;
@@ -38,6 +39,23 @@ public class UsuarioCriteria implements Serializable, Criteria {
         }
     }
 
+    /**
+     * Class for filtering Genero
+     */
+    public static class GeneroFilter extends Filter<Genero> {
+
+        public GeneroFilter() {}
+
+        public GeneroFilter(GeneroFilter filter) {
+            super(filter);
+        }
+
+        @Override
+        public GeneroFilter copy() {
+            return new GeneroFilter(this);
+        }
+    }
+
     private static final long serialVersionUID = 1L;
 
     private LongFilter id;
@@ -62,6 +80,8 @@ public class UsuarioCriteria implements Serializable, Criteria {
 
     private IntegerFilter pontosUser;
 
+    private GeneroFilter genero;
+
     private LongFilter internalUserId;
 
     private Boolean distinct;
@@ -80,6 +100,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
         this.metaCaloriasConsumidas = other.optionalMetaCaloriasConsumidas().map(DoubleFilter::copy).orElse(null);
         this.metaCaloriasQueimadas = other.optionalMetaCaloriasQueimadas().map(DoubleFilter::copy).orElse(null);
         this.pontosUser = other.optionalPontosUser().map(IntegerFilter::copy).orElse(null);
+        this.genero = other.optionalGenero().map(GeneroFilter::copy).orElse(null);
         this.internalUserId = other.optionalInternalUserId().map(LongFilter::copy).orElse(null);
         this.distinct = other.distinct;
     }
@@ -298,6 +319,25 @@ public class UsuarioCriteria implements Serializable, Criteria {
         this.pontosUser = pontosUser;
     }
 
+    public GeneroFilter getGenero() {
+        return genero;
+    }
+
+    public Optional<GeneroFilter> optionalGenero() {
+        return Optional.ofNullable(genero);
+    }
+
+    public GeneroFilter genero() {
+        if (genero == null) {
+            setGenero(new GeneroFilter());
+        }
+        return genero;
+    }
+
+    public void setGenero(GeneroFilter genero) {
+        this.genero = genero;
+    }
+
     public LongFilter getInternalUserId() {
         return internalUserId;
     }
@@ -357,6 +397,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
             Objects.equals(metaCaloriasConsumidas, that.metaCaloriasConsumidas) &&
             Objects.equals(metaCaloriasQueimadas, that.metaCaloriasQueimadas) &&
             Objects.equals(pontosUser, that.pontosUser) &&
+            Objects.equals(genero, that.genero) &&
             Objects.equals(internalUserId, that.internalUserId) &&
             Objects.equals(distinct, that.distinct)
         );
@@ -376,6 +417,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
             metaCaloriasConsumidas,
             metaCaloriasQueimadas,
             pontosUser,
+            genero,
             internalUserId,
             distinct
         );
@@ -396,6 +438,7 @@ public class UsuarioCriteria implements Serializable, Criteria {
             optionalMetaCaloriasConsumidas().map(f -> "metaCaloriasConsumidas=" + f + ", ").orElse("") +
             optionalMetaCaloriasQueimadas().map(f -> "metaCaloriasQueimadas=" + f + ", ").orElse("") +
             optionalPontosUser().map(f -> "pontosUser=" + f + ", ").orElse("") +
+            optionalGenero().map(f -> "genero=" + f + ", ").orElse("") +
             optionalInternalUserId().map(f -> "internalUserId=" + f + ", ").orElse("") +
             optionalDistinct().map(f -> "distinct=" + f + ", ").orElse("") +
         "}";

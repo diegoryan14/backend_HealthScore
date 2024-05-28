@@ -20,10 +20,10 @@
             <column name="valor_meta" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="data_inicio" type="${datetimeType}">
+            <column name="data_inicio" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="data_fim" type="${datetimeType}">
+            <column name="data_fim" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="internal_user_id" type="bigint">
@@ -31,8 +31,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="metas_saude" columnName="data_inicio" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="metas_saude" columnName="data_fim" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="metas_saude" columnName="data_inicio" columnDataType="datetime"/>
+        <dropDefaultValue tableName="metas_saude" columnName="data_fim" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

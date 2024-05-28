@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.healthscore.app.IntegrationTest;
 import com.healthscore.app.domain.User;
 import com.healthscore.app.domain.Usuario;
+import com.healthscore.app.domain.enumeration.Genero;
 import com.healthscore.app.domain.enumeration.TipoPlano;
 import com.healthscore.app.repository.UsuarioRepository;
 import jakarta.persistence.EntityManager;
@@ -71,6 +72,9 @@ class UsuarioResourceIT {
     private static final Integer UPDATED_PONTOS_USER = 2;
     private static final Integer SMALLER_PONTOS_USER = 1 - 1;
 
+    private static final Genero DEFAULT_GENERO = Genero.MASCULINO;
+    private static final Genero UPDATED_GENERO = Genero.FEMININO;
+
     private static final String ENTITY_API_URL = "/api/usuarios";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -108,7 +112,8 @@ class UsuarioResourceIT {
             .metaSono(DEFAULT_META_SONO)
             .metaCaloriasConsumidas(DEFAULT_META_CALORIAS_CONSUMIDAS)
             .metaCaloriasQueimadas(DEFAULT_META_CALORIAS_QUEIMADAS)
-            .pontosUser(DEFAULT_PONTOS_USER);
+            .pontosUser(DEFAULT_PONTOS_USER)
+            .genero(DEFAULT_GENERO);
         return usuario;
     }
 
@@ -129,7 +134,8 @@ class UsuarioResourceIT {
             .metaSono(UPDATED_META_SONO)
             .metaCaloriasConsumidas(UPDATED_META_CALORIAS_CONSUMIDAS)
             .metaCaloriasQueimadas(UPDATED_META_CALORIAS_QUEIMADAS)
-            .pontosUser(UPDATED_PONTOS_USER);
+            .pontosUser(UPDATED_PONTOS_USER)
+            .genero(UPDATED_GENERO);
         return usuario;
     }
 
@@ -196,7 +202,8 @@ class UsuarioResourceIT {
             .andExpect(jsonPath("$.[*].metaSono").value(hasItem(DEFAULT_META_SONO.doubleValue())))
             .andExpect(jsonPath("$.[*].metaCaloriasConsumidas").value(hasItem(DEFAULT_META_CALORIAS_CONSUMIDAS.doubleValue())))
             .andExpect(jsonPath("$.[*].metaCaloriasQueimadas").value(hasItem(DEFAULT_META_CALORIAS_QUEIMADAS.doubleValue())))
-            .andExpect(jsonPath("$.[*].pontosUser").value(hasItem(DEFAULT_PONTOS_USER)));
+            .andExpect(jsonPath("$.[*].pontosUser").value(hasItem(DEFAULT_PONTOS_USER)))
+            .andExpect(jsonPath("$.[*].genero").value(hasItem(DEFAULT_GENERO.toString())));
     }
 
     @Test
@@ -220,7 +227,8 @@ class UsuarioResourceIT {
             .andExpect(jsonPath("$.metaSono").value(DEFAULT_META_SONO.doubleValue()))
             .andExpect(jsonPath("$.metaCaloriasConsumidas").value(DEFAULT_META_CALORIAS_CONSUMIDAS.doubleValue()))
             .andExpect(jsonPath("$.metaCaloriasQueimadas").value(DEFAULT_META_CALORIAS_QUEIMADAS.doubleValue()))
-            .andExpect(jsonPath("$.pontosUser").value(DEFAULT_PONTOS_USER));
+            .andExpect(jsonPath("$.pontosUser").value(DEFAULT_PONTOS_USER))
+            .andExpect(jsonPath("$.genero").value(DEFAULT_GENERO.toString()));
     }
 
     @Test
@@ -863,6 +871,36 @@ class UsuarioResourceIT {
 
     @Test
     @Transactional
+    void getAllUsuariosByGeneroIsEqualToSomething() throws Exception {
+        // Initialize the database
+        usuarioRepository.saveAndFlush(usuario);
+
+        // Get all the usuarioList where genero equals to
+        defaultUsuarioFiltering("genero.equals=" + DEFAULT_GENERO, "genero.equals=" + UPDATED_GENERO);
+    }
+
+    @Test
+    @Transactional
+    void getAllUsuariosByGeneroIsInShouldWork() throws Exception {
+        // Initialize the database
+        usuarioRepository.saveAndFlush(usuario);
+
+        // Get all the usuarioList where genero in
+        defaultUsuarioFiltering("genero.in=" + DEFAULT_GENERO + "," + UPDATED_GENERO, "genero.in=" + UPDATED_GENERO);
+    }
+
+    @Test
+    @Transactional
+    void getAllUsuariosByGeneroIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        usuarioRepository.saveAndFlush(usuario);
+
+        // Get all the usuarioList where genero is not null
+        defaultUsuarioFiltering("genero.specified=true", "genero.specified=false");
+    }
+
+    @Test
+    @Transactional
     void getAllUsuariosByInternalUserIsEqualToSomething() throws Exception {
         User internalUser;
         if (TestUtil.findAll(em, User.class).isEmpty()) {
@@ -906,7 +944,8 @@ class UsuarioResourceIT {
             .andExpect(jsonPath("$.[*].metaSono").value(hasItem(DEFAULT_META_SONO.doubleValue())))
             .andExpect(jsonPath("$.[*].metaCaloriasConsumidas").value(hasItem(DEFAULT_META_CALORIAS_CONSUMIDAS.doubleValue())))
             .andExpect(jsonPath("$.[*].metaCaloriasQueimadas").value(hasItem(DEFAULT_META_CALORIAS_QUEIMADAS.doubleValue())))
-            .andExpect(jsonPath("$.[*].pontosUser").value(hasItem(DEFAULT_PONTOS_USER)));
+            .andExpect(jsonPath("$.[*].pontosUser").value(hasItem(DEFAULT_PONTOS_USER)))
+            .andExpect(jsonPath("$.[*].genero").value(hasItem(DEFAULT_GENERO.toString())));
 
         // Check, that the count call also returns 1
         restUsuarioMockMvc
@@ -964,7 +1003,8 @@ class UsuarioResourceIT {
             .metaSono(UPDATED_META_SONO)
             .metaCaloriasConsumidas(UPDATED_META_CALORIAS_CONSUMIDAS)
             .metaCaloriasQueimadas(UPDATED_META_CALORIAS_QUEIMADAS)
-            .pontosUser(UPDATED_PONTOS_USER);
+            .pontosUser(UPDATED_PONTOS_USER)
+            .genero(UPDATED_GENERO);
 
         restUsuarioMockMvc
             .perform(
@@ -1044,7 +1084,8 @@ class UsuarioResourceIT {
             .dataRegistro(UPDATED_DATA_REGISTRO)
             .telefone(UPDATED_TELEFONE)
             .email(UPDATED_EMAIL)
-            .metaConsumoAgua(UPDATED_META_CONSUMO_AGUA);
+            .metaConsumoAgua(UPDATED_META_CONSUMO_AGUA)
+            .genero(UPDATED_GENERO);
 
         restUsuarioMockMvc
             .perform(
@@ -1082,7 +1123,8 @@ class UsuarioResourceIT {
             .metaSono(UPDATED_META_SONO)
             .metaCaloriasConsumidas(UPDATED_META_CALORIAS_CONSUMIDAS)
             .metaCaloriasQueimadas(UPDATED_META_CALORIAS_QUEIMADAS)
-            .pontosUser(UPDATED_PONTOS_USER);
+            .pontosUser(UPDATED_PONTOS_USER)
+            .genero(UPDATED_GENERO);
 
         restUsuarioMockMvc
             .perform(

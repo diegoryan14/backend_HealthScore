@@ -1,5 +1,6 @@
 package com.healthscore.app.domain;
 
+import com.healthscore.app.domain.enumeration.Genero;
 import com.healthscore.app.domain.enumeration.TipoPlano;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -53,6 +54,10 @@ public class Usuario implements Serializable {
 
     @Column(name = "pontos_user")
     private Integer pontosUser;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "genero")
+    private Genero genero;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
@@ -203,6 +208,19 @@ public class Usuario implements Serializable {
         this.pontosUser = pontosUser;
     }
 
+    public Genero getGenero() {
+        return this.genero;
+    }
+
+    public Usuario genero(Genero genero) {
+        this.setGenero(genero);
+        return this;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
     public User getInternalUser() {
         return this.internalUser;
     }
@@ -250,6 +268,7 @@ public class Usuario implements Serializable {
             ", metaCaloriasConsumidas=" + getMetaCaloriasConsumidas() +
             ", metaCaloriasQueimadas=" + getMetaCaloriasQueimadas() +
             ", pontosUser=" + getPontosUser() +
+            ", genero='" + getGenero() + "'" +
             "}";
     }
 }

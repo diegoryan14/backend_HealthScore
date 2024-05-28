@@ -73,6 +73,9 @@ public class UsuarioServiceImpl implements UsuarioService {
                 if (usuario.getPontosUser() != null) {
                     existingUsuario.setPontosUser(usuario.getPontosUser());
                 }
+                if (usuario.getGenero() != null) {
+                    existingUsuario.setGenero(usuario.getGenero());
+                }
 
                 return existingUsuario;
             })

@@ -17,7 +17,7 @@
             <column name="tipo_especialista" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_horario_consulta" type="${datetimeType}">
+            <column name="data_horario_consulta" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="status_consulta" type="varchar(255)">
@@ -34,7 +34,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="consulta_especialista" columnName="data_horario_consulta" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="consulta_especialista" columnName="data_horario_consulta" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

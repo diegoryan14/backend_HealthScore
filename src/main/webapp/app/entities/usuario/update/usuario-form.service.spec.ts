@@ -30,6 +30,7 @@ describe('Usuario Form Service', () => {
             metaCaloriasConsumidas: expect.any(Object),
             metaCaloriasQueimadas: expect.any(Object),
             pontosUser: expect.any(Object),
+            genero: expect.any(Object),
             internalUser: expect.any(Object),
           }),
         );
@@ -51,6 +52,7 @@ describe('Usuario Form Service', () => {
             metaCaloriasConsumidas: expect.any(Object),
             metaCaloriasQueimadas: expect.any(Object),
             pontosUser: expect.any(Object),
+            genero: expect.any(Object),
             internalUser: expect.any(Object),
           }),
         );

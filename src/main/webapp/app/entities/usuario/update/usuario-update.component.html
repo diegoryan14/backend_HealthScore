@@ -125,6 +125,16 @@
         </div>
 
         <div class="mb-3">
+          <label class="form-label" for="field_genero" appTranslate="healthScoreApp.usuario.genero">Genero</label>
+          <select class="form-control" name="genero" formControlName="genero" id="field_genero" data-cy="genero">
+            <option [ngValue]="null">{{ 'healthScoreApp.Genero.null' | translate }}</option>
+            @for (genero of generoValues; track $index) {
+              <option [value]="genero">{{ 'healthScoreApp.Genero.' + genero | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
           <label class="form-label" for="field_internalUser" appTranslate="healthScoreApp.usuario.internalUser">Internal User</label>
           <select
             class="form-control"

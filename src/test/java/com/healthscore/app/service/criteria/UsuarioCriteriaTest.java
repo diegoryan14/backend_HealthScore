@@ -85,6 +85,7 @@ class UsuarioCriteriaTest {
         usuarioCriteria.metaCaloriasConsumidas();
         usuarioCriteria.metaCaloriasQueimadas();
         usuarioCriteria.pontosUser();
+        usuarioCriteria.genero();
         usuarioCriteria.internalUserId();
         usuarioCriteria.distinct();
     }
@@ -103,6 +104,7 @@ class UsuarioCriteriaTest {
                 condition.apply(criteria.getMetaCaloriasConsumidas()) &&
                 condition.apply(criteria.getMetaCaloriasQueimadas()) &&
                 condition.apply(criteria.getPontosUser()) &&
+                condition.apply(criteria.getGenero()) &&
                 condition.apply(criteria.getInternalUserId()) &&
                 condition.apply(criteria.getDistinct()),
             "every filter matches"
@@ -123,6 +125,7 @@ class UsuarioCriteriaTest {
                 condition.apply(criteria.getMetaCaloriasConsumidas(), copy.getMetaCaloriasConsumidas()) &&
                 condition.apply(criteria.getMetaCaloriasQueimadas(), copy.getMetaCaloriasQueimadas()) &&
                 condition.apply(criteria.getPontosUser(), copy.getPontosUser()) &&
+                condition.apply(criteria.getGenero(), copy.getGenero()) &&
                 condition.apply(criteria.getInternalUserId(), copy.getInternalUserId()) &&
                 condition.apply(criteria.getDistinct(), copy.getDistinct()),
             "every filter matches"

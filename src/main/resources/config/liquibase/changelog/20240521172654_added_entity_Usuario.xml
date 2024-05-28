@@ -17,7 +17,7 @@
             <column name="plano" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_registro" type="${datetimeType}">
+            <column name="data_registro" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="telefone" type="integer">
@@ -26,7 +26,7 @@
             <column name="email" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_nascimento" type="${datetimeType}">
+            <column name="data_nascimento" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="meta_consumo_agua" type="integer">
@@ -44,13 +44,16 @@
             <column name="pontos_user" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="genero" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="internal_user_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__internal_user_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="usuario" columnName="data_registro" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="usuario" columnName="data_nascimento" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="usuario" columnName="data_registro" columnDataType="datetime"/>
+        <dropDefaultValue tableName="usuario" columnName="data_nascimento" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -80,6 +83,7 @@
             <column name="meta_calorias_consumidas" type="numeric"/>
             <column name="meta_calorias_queimadas" type="numeric"/>
             <column name="pontos_user" type="numeric"/>
+            <column name="genero" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

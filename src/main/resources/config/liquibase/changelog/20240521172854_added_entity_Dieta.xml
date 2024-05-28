@@ -17,7 +17,7 @@
             <column name="descricao_refeicao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_horario_refeicao" type="${datetimeType}">
+            <column name="data_horario_refeicao" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="calorias_consumidas" type="integer">
@@ -28,7 +28,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="dieta" columnName="data_horario_refeicao" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="dieta" columnName="data_horario_refeicao" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

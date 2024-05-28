@@ -20,13 +20,13 @@
             <column name="descricao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_publicacao" type="${datetimeType}">
+            <column name="data_publicacao" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="data_inicio" type="${datetimeType}">
+            <column name="data_inicio" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="data_fim" type="${datetimeType}">
+            <column name="data_fim" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="preco" type="double">
@@ -34,9 +34,9 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="anuncio" columnName="data_publicacao" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="anuncio" columnName="data_inicio" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="anuncio" columnName="data_fim" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="anuncio" columnName="data_publicacao" columnDataType="datetime"/>
+        <dropDefaultValue tableName="anuncio" columnName="data_inicio" columnDataType="datetime"/>
+        <dropDefaultValue tableName="anuncio" columnName="data_fim" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

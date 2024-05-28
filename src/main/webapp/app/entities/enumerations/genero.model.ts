@@ -1,0 +1,7 @@
+export enum Genero {
+  MASCULINO = 'MASCULINO',
+
+  FEMININO = 'FEMININO',
+
+  NAO_IDENTIFICADO = 'NAO_IDENTIFICADO',
+}

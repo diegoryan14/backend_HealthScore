@@ -57,6 +57,12 @@
           <dd>
             <span>{{ usuario()!.pontosUser }}</span>
           </dd>
+          <dt><span appTranslate="healthScoreApp.usuario.genero">Genero</span></dt>
+          <dd>
+            <span [appTranslate]="'healthScoreApp.Genero.' + (usuario()!.genero ?? 'null')">{{
+              { null: '', MASCULINO: 'MASCULINO', FEMININO: 'FEMININO', NAO_IDENTIFICADO: 'NAO_IDENTIFICADO' }[usuario()!.genero ?? 'null']
+            }}</span>
+          </dd>
           <dt><span appTranslate="healthScoreApp.usuario.internalUser">Internal User</span></dt>
           <dd>
             <span>{{ usuario()!.internalUser?.id }}</span>

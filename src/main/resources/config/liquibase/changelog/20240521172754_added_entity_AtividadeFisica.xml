@@ -17,7 +17,7 @@
             <column name="tipo_atividade" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_horario" type="${datetimeType}">
+            <column name="data_horario" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="duracao" type="integer">
@@ -31,7 +31,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="atividade_fisica" columnName="data_horario" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="atividade_fisica" columnName="data_horario" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

@@ -23,7 +23,7 @@
             <column name="especializacao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_formacao" type="${datetimeType}">
+            <column name="data_formacao" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="telefone" type="integer">
@@ -32,13 +32,13 @@
             <column name="email" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="data_nascimento" type="${datetimeType}">
+            <column name="data_nascimento" type="datetime">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="especialista" columnName="data_formacao" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="especialista" columnName="data_nascimento" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="especialista" columnName="data_formacao" columnDataType="datetime"/>
+        <dropDefaultValue tableName="especialista" columnName="data_nascimento" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

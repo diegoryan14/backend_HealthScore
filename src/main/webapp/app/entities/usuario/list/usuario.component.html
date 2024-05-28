@@ -114,6 +114,13 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" appSortBy="genero">
+              <div class="d-flex">
+                <span appTranslate="healthScoreApp.usuario.genero">Genero</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" appSortBy="internalUser.id">
               <div class="d-flex">
                 <span appTranslate="healthScoreApp.usuario.internalUser">Internal User</span>
@@ -141,6 +148,11 @@
               <td>{{ usuario.metaCaloriasConsumidas }}</td>
               <td>{{ usuario.metaCaloriasQueimadas }}</td>
               <td>{{ usuario.pontosUser }}</td>
+              <td [appTranslate]="'healthScoreApp.Genero.' + (usuario.genero ?? 'null')">
+                {{
+                  { null: '', MASCULINO: 'MASCULINO', FEMININO: 'FEMININO', NAO_IDENTIFICADO: 'NAO_IDENTIFICADO' }[usuario.genero ?? 'null']
+                }}
+              </td>
               <td>
                 {{ usuario.internalUser?.id }}
               </td>

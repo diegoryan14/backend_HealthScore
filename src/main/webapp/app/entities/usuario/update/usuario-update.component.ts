@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IUser } from 'app/entities/user/user.model';
 import { UserService } from 'app/entities/user/service/user.service';
 import { TipoPlano } from 'app/entities/enumerations/tipo-plano.model';
+import { Genero } from 'app/entities/enumerations/genero.model';
 import { UsuarioService } from '../service/usuario.service';
 import { IUsuario } from '../usuario.model';
 import { UsuarioFormService, UsuarioFormGroup } from './usuario-form.service';
@@ -24,6 +25,7 @@ export class UsuarioUpdateComponent implements OnInit {
   isSaving = false;
   usuario: IUsuario | null = null;
   tipoPlanoValues = Object.keys(TipoPlano);
+  generoValues = Object.keys(Genero);
 
   usersSharedCollection: IUser[] = [];
 

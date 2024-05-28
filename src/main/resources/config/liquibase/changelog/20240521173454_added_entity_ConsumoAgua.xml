@@ -14,7 +14,7 @@
             <column name="id" type="bigint" autoIncrement="true" startWith="1500">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="data_consumo" type="${datetimeType}">
+            <column name="data_consumo" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="quantidade_ml" type="integer">
@@ -25,7 +25,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="consumo_agua" columnName="data_consumo" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="consumo_agua" columnName="data_consumo" columnDataType="datetime"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

@@ -63,7 +63,8 @@ public class UsuarioAsserts {
             .satisfies(
                 e -> assertThat(e.getMetaCaloriasQueimadas()).as("check metaCaloriasQueimadas").isEqualTo(actual.getMetaCaloriasQueimadas())
             )
-            .satisfies(e -> assertThat(e.getPontosUser()).as("check pontosUser").isEqualTo(actual.getPontosUser()));
+            .satisfies(e -> assertThat(e.getPontosUser()).as("check pontosUser").isEqualTo(actual.getPontosUser()))
+            .satisfies(e -> assertThat(e.getGenero()).as("check genero").isEqualTo(actual.getGenero()));
     }
 
     /**

@@ -106,6 +106,9 @@ public class UsuarioQueryService extends QueryService<Usuario> {
             if (criteria.getPontosUser() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getPontosUser(), Usuario_.pontosUser));
             }
+            if (criteria.getGenero() != null) {
+                specification = specification.and(buildSpecification(criteria.getGenero(), Usuario_.genero));
+            }
             if (criteria.getInternalUserId() != null) {
                 specification = specification.and(
                     buildSpecification(criteria.getInternalUserId(), root -> root.join(Usuario_.internalUser, JoinType.LEFT).get(User_.id))

@@ -42,6 +42,7 @@ type UsuarioFormGroupContent = {
   metaCaloriasConsumidas: FormControl<UsuarioFormRawValue['metaCaloriasConsumidas']>;
   metaCaloriasQueimadas: FormControl<UsuarioFormRawValue['metaCaloriasQueimadas']>;
   pontosUser: FormControl<UsuarioFormRawValue['pontosUser']>;
+  genero: FormControl<UsuarioFormRawValue['genero']>;
   internalUser: FormControl<UsuarioFormRawValue['internalUser']>;
 };
 
@@ -72,6 +73,7 @@ export class UsuarioFormService {
       metaCaloriasConsumidas: new FormControl(usuarioRawValue.metaCaloriasConsumidas),
       metaCaloriasQueimadas: new FormControl(usuarioRawValue.metaCaloriasQueimadas),
       pontosUser: new FormControl(usuarioRawValue.pontosUser),
+      genero: new FormControl(usuarioRawValue.genero),
       internalUser: new FormControl(usuarioRawValue.internalUser),
     });
   }
