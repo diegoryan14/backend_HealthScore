@@ -10,6 +10,8 @@
   npm install -g generator-jhipster
 
 ## Para rodar o projeto:
+  - clonar o repositorio
+  - entrar na pasta HealthScore
   - npm install
   - ./gradlew -x webapp
 
