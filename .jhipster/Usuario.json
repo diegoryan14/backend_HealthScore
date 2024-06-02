@@ -7,7 +7,7 @@
     {
       "fieldName": "plano",
       "fieldType": "TipoPlano",
-      "fieldValues": "GRATUITO,BRONZE,PRATA,OURO"
+      "fieldValues": "GRATUITO,PREMIUM"
     },
     {
       "fieldName": "dataRegistro",

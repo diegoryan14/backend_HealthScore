@@ -8,7 +8,7 @@ export const sampleWithRequiredData: IUsuario = {
 
 export const sampleWithPartialData: IUsuario = {
   id: 26905,
-  plano: 'BRONZE',
+  plano: 'GRATUITO',
   dataRegistro: dayjs('2024-05-21T12:16'),
   telefone: 31203,
   dataNascimento: dayjs('2024-05-20T20:52'),
@@ -17,7 +17,7 @@ export const sampleWithPartialData: IUsuario = {
 
 export const sampleWithFullData: IUsuario = {
   id: 520,
-  plano: 'BRONZE',
+  plano: 'GRATUITO',
   dataRegistro: dayjs('2024-05-21T04:23'),
   telefone: 5547,
   email: 'Lucas2@live.com',

@@ -5,7 +5,5 @@ package com.healthscore.app.domain.enumeration;
  */
 public enum TipoPlano {
     GRATUITO,
-    BRONZE,
-    PRATA,
-    OURO,
+    PREMIUM,
 }

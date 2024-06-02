@@ -137,7 +137,7 @@
                 <a [routerLink]="['/usuario', usuario.id, 'view']">{{ usuario.id }}</a>
               </td>
               <td [appTranslate]="'healthScoreApp.TipoPlano.' + (usuario.plano ?? 'null')">
-                {{ { null: '', GRATUITO: 'GRATUITO', BRONZE: 'BRONZE', PRATA: 'PRATA', OURO: 'OURO' }[usuario.plano ?? 'null'] }}
+                {{ { null: '', GRATUITO: 'GRATUITO', PREMIUM: 'PREMIUM' }[usuario.plano ?? 'null'] }}
               </td>
               <td>{{ usuario.dataRegistro | formatMediumDatetime }}</td>
               <td>{{ usuario.telefone }}</td>

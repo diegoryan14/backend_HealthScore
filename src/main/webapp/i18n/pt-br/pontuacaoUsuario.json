@@ -1,0 +1,27 @@
+{
+  "healthScoreApp": {
+    "pontuacaoUsuario": {
+      "home": {
+        "title": "Pontuacao Usuarios",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Pontuacao Usuario",
+        "createOrEditLabel": "Criar ou editar Pontuacao Usuario",
+        "notFound": "Nenhum Pontuacao Usuario encontrado"
+      },
+      "created": "Um novo Pontuacao Usuario foi criado com o identificador {{ param }}",
+      "updated": "Um Pontuacao Usuario foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Pontuacao Usuario foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Pontuacao Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Pontuacao Usuario"
+      },
+      "id": "ID",
+      "dataAlteracao": "Data Alteracao",
+      "valorAlteracao": "Valor Alteracao",
+      "motivo": "Motivo",
+      "usuario": "Usuario"
+    }
+  }
+}

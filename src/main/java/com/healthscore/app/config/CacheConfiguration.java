@@ -57,6 +57,7 @@ public class CacheConfiguration {
             createCache(cm, com.healthscore.app.domain.ConsumoAgua.class.getName());
             createCache(cm, com.healthscore.app.domain.Especialista.class.getName());
             createCache(cm, com.healthscore.app.domain.Especialista.class.getName() + ".consultas");
+            createCache(cm, com.healthscore.app.domain.PontuacaoUsuario.class.getName());
             // jhipster-needle-caffeine-add-entry
         };
     }

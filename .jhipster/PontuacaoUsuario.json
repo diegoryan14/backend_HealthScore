@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240602164629"
+  },
+  "applications": ["HealthScore"],
+  "fields": [
+    {
+      "fieldName": "dataAlteracao",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "valorAlteracao",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "motivo",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "PontuacaoUsuario",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "usuario",
+      "relationshipName": "usuario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

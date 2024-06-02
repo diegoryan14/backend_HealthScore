@@ -56,6 +56,11 @@ const routes: Routes = [
     data: { pageTitle: 'healthScoreApp.especialista.home.title' },
     loadChildren: () => import('./especialista/especialista.routes'),
   },
+  {
+    path: 'pontuacao-usuario',
+    data: { pageTitle: 'healthScoreApp.pontuacaoUsuario.home.title' },
+    loadChildren: () => import('./pontuacao-usuario/pontuacao-usuario.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

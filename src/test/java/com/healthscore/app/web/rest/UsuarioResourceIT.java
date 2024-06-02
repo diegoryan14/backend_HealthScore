@@ -37,7 +37,7 @@ import org.springframework.transaction.annotation.Transactional;
 class UsuarioResourceIT {
 
     private static final TipoPlano DEFAULT_PLANO = TipoPlano.GRATUITO;
-    private static final TipoPlano UPDATED_PLANO = TipoPlano.BRONZE;
+    private static final TipoPlano UPDATED_PLANO = TipoPlano.PREMIUM;
 
     private static final Instant DEFAULT_DATA_REGISTRO = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA_REGISTRO = Instant.now().truncatedTo(ChronoUnit.MILLIS);

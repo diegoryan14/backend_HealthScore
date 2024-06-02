@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pontuacaoUsuario()) {
+      <div>
+        <h2 data-cy="pontuacaoUsuarioDetailsHeading">
+          <span appTranslate="healthScoreApp.pontuacaoUsuario.detail.title">Pontuacao Usuario</span>
+        </h2>
+
+        <hr />
+
+        <app-alert-error></app-alert-error>
+
+        <app-alert></app-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span appTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ pontuacaoUsuario()!.id }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.pontuacaoUsuario.dataAlteracao">Data Alteracao</span></dt>
+          <dd>
+            <span>{{ pontuacaoUsuario()!.dataAlteracao | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.pontuacaoUsuario.valorAlteracao">Valor Alteracao</span></dt>
+          <dd>
+            <span>{{ pontuacaoUsuario()!.valorAlteracao }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.pontuacaoUsuario.motivo">Motivo</span></dt>
+          <dd>
+            <span>{{ pontuacaoUsuario()!.motivo }}</span>
+          </dd>
+          <dt><span appTranslate="healthScoreApp.pontuacaoUsuario.usuario">Usuario</span></dt>
+          <dd>
+            @if (pontuacaoUsuario()!.usuario) {
+              <div>
+                <a [routerLink]="['/usuario', pontuacaoUsuario()!.usuario?.id, 'view']">{{ pontuacaoUsuario()!.usuario?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pontuacao-usuario', pontuacaoUsuario()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

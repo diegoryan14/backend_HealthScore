@@ -21,6 +21,7 @@
     <include file="config/liquibase/changelog/20240521173354_added_entity_ConsultaEspecialista.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240521173454_added_entity_ConsumoAgua.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240521173554_added_entity_Especialista.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240602164629_added_entity_PontuacaoUsuario.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240521172654_added_entity_constraints_Usuario.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240521172754_added_entity_constraints_AtividadeFisica.xml" relativeToChangelogFile="false"/>
@@ -30,6 +31,7 @@
     <include file="config/liquibase/changelog/20240521173154_added_entity_constraints_MetasSaude.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240521173354_added_entity_constraints_ConsultaEspecialista.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240521173454_added_entity_constraints_ConsumoAgua.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240602164629_added_entity_constraints_PontuacaoUsuario.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

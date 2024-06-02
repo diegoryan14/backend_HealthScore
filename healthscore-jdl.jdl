@@ -104,6 +104,12 @@ entity Especialista {
     dataNascimento Instant
 }
 
+entity PontuacaoUsuario {
+    dataAlteracao Instant,
+    valorAlteracao Integer,
+    motivo String
+}
+
 enum Especializacao {
     NUTRICIONISTA,
     PSICOLOGO,
@@ -113,9 +119,7 @@ enum Especializacao {
 
 enum TipoPlano {
     GRATUITO,
-    BRONZE,
-    PRATA,
-    OURO
+    PREMIUM
 }
 
 enum TipoAtividade {
@@ -163,7 +167,8 @@ relationship ManyToOne {
     ControleMedicamentos{internalUser} to User with builtInEntity,
     MetasSaude{internalUser} to User with builtInEntity,
     ConsultaEspecialista{internalUser} to User with builtInEntity,
-    ConsumoAgua{internalUser} to User with builtInEntity
+    ConsumoAgua{internalUser} to User with builtInEntity,
+    PontuacaoUsuario{usuario} to Usuario
 }
 
 relationship OneToMany {

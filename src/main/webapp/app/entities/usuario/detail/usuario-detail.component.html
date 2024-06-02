@@ -18,7 +18,7 @@
           <dt><span appTranslate="healthScoreApp.usuario.plano">Plano</span></dt>
           <dd>
             <span [appTranslate]="'healthScoreApp.TipoPlano.' + (usuario()!.plano ?? 'null')">{{
-              { null: '', GRATUITO: 'GRATUITO', BRONZE: 'BRONZE', PRATA: 'PRATA', OURO: 'OURO' }[usuario()!.plano ?? 'null']
+              { null: '', GRATUITO: 'GRATUITO', PREMIUM: 'PREMIUM' }[usuario()!.plano ?? 'null']
             }}</span>
           </dd>
           <dt><span appTranslate="healthScoreApp.usuario.dataRegistro">Data Registro</span></dt>

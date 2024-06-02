@@ -51,4 +51,9 @@ export const EntityNavbarItems: NavbarItem[] = [
     route: '/especialista',
     translationKey: 'global.menu.entities.especialista',
   },
+  {
+    name: 'PontuacaoUsuario',
+    route: '/pontuacao-usuario',
+    translationKey: 'global.menu.entities.pontuacaoUsuario',
+  },
 ];

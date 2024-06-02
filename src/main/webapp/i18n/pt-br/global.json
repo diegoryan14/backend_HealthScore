@@ -18,7 +18,8 @@
         "anuncio": "Anuncio",
         "consultaEspecialista": "Consulta Especialista",
         "consumoAgua": "Consumo Agua",
-        "especialista": "Especialista"
+        "especialista": "Especialista",
+        "pontuacaoUsuario": "Pontuacao Usuario"
       },
       "account": {
         "main": "Conta",
